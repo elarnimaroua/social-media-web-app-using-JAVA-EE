@@ -1,7 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-
-
 
 <head>
 	<title>Landing Page</title>
@@ -51,7 +51,7 @@
 				    
 				  </div>
 				  <button type="submit" class="btn btn-success">Login</button>
-				  <a href="#">Mot de passe oublié</a>
+				  <a href="#">Forgot your password?</a>
 				  
 			  </form>
 			  </div>
