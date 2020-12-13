@@ -38,38 +38,36 @@
 
 	<div class="container">
 		<div class="jumbotron" style=" margin-top: 7em" >
-			<form>
-
-		
+			<form action="signup" method="post">
 			  	<div class="form-row">
 			    <div class="col-md-6 mb-3">
 			      <label for="validationDefault01">First name</label>
-			      <input type="text" class="form-control" id="validationDefault01" value="" required>
+			      <input name="First name" type="text" class="form-control" id="validationDefault01" value="" required>
 			    </div>
 			    <div class="col-md-6 mb-3">
 			      <label for="validationDefault02">Last name</label>
-			      <input type="text" class="form-control" id="validationDefault02" value="" required>
+			      <input name ="Last name" type="text" class="form-control" id="validationDefault02" value="" required>
 			    </div>
 			  </div>
 			  <div class="form-outline datepicker"  data-format="dd, mmm, yyyy">
 					<label for="exampleDatepicker4" class="form-label">Select birth date</label>
-	  				<input type="text" class="form-control" id="exampleDatepicker4" placeholder="dd/mm/yyyy"/>
+	  				<input name="birthday" type="text" class="form-control" id="exampleDatepicker4" placeholder="dd/mm/yyyy"/>
 	  			</div>
 	  			<br>
 			  <div class="form-row">
 			    <div class="col-md-6 mb-3">
 			      <label for="validationDefault03">Adress</label>
-			      <input type="text" class="form-control" id="validationDefault03" required>
+			      <input name="adress" type="text" class="form-control" id="validationDefault03" required>
 			    </div>
 			    <div class="col-md-3 mb-3">
 			      <label for="validationDefault04">City</label>
-			      <select class="custom-select" id="validationDefault04" required>
+			      <select name="city" class="custom-select" id="validationDefault04" required>
 			        <option selected disabled value="">Choose...</option>
 			        <option>Casablanca</option>
 			        <option>Fez</option>
 			        <option>Tangier</option>
 			        <option>Marrakesh</option>
-			        <option>Salé</option>
+			        <option>Sale</option>
 			        <option>Meknes</option>
 			        <option>Rabat</option>
 			        <option>Oujda</option>
@@ -88,7 +86,7 @@
 			  <div class="form-row">
 			    <div class="col-md-6 mb-3">
 			      <label for="validationDefault01">Email Adress</label>
-			      <input type="email" class="form-control" id="validationDefault01" value="" required>
+			      <input name="email" type="email" class="form-control" id="validationDefault01" value="" required>
 			    </div>
 			  </div>
 			  
@@ -96,12 +94,12 @@
 			  
 			  <p>
 			  <label for="password1">Password</label>
-			  <input id="password1" class="form-control" type=password required name=up>
+			  <input name="password1" id="password1" class="form-control" type=password required name=up>
 			  <p>
 			  <label for="password2">Confirm password</label>
 			  <input id="password2" class="form-control" type=password name=up2>
 			  
-			  <input type=submit value="Create account">
+			  <input name="password2" type=submit value="Create account">
 			</form>
 			
 		</form>
