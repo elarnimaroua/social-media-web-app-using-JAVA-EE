@@ -37,8 +37,7 @@ public class SignUp extends HttpServlet {
 		 String pass1 = Req.getParameter("password1");
 		 String pass2 = Req.getParameter("password2");
 	     
-	     
-		 
+	     /* TEST TEST*/
 		
 	}
 
