@@ -46,6 +46,7 @@ public class SignUp extends HttpServlet {
 		 String zip = Req.getParameter("zip");
 		 String pass2 = Req.getParameter("password2");
 	     
+<<<<<<< HEAD
 	     try {
 	    	   Class.forName("com.mysql.cj.jdbc.Driver");
 				String url="jdbc:mysql://127.0.0.1:3306/jeeproject_db?autoReconnect=true&serverTimezone=UTC&useSSL=False&allowPublicKeyRetrieval=true";
@@ -71,6 +72,9 @@ public class SignUp extends HttpServlet {
 	  
 
 		 
+=======
+	     /* TEST TEST*/
+>>>>>>> 819bc76d0bbaff04508c8b0f96451d78a034444d
 		
 	}
 
