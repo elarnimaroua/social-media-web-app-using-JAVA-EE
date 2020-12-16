@@ -38,7 +38,7 @@
 
 	<div class="container">
 		<div class="jumbotron" style=" margin-top: 7em" >
-			<form action="signup" method="post">
+			<form action="signup" method="post" oninput='up2.setCustomValidity(up2.value != up.value ? "Passwords do not match." : "")' >
 			  	<div class="form-row">
 			    <div class="col-md-6 mb-3">
 			      <label for="validationDefault01">First name</label>
@@ -79,7 +79,7 @@
 			    </div>
 			    <div class="col-md-3 mb-3">
 			      <label for="validationDefault05">Zip</label>
-			      <input type="text" class="form-control" id="validationDefault05" required>
+			      <input name ="zip" type="text" class="form-control" id="validationDefault05" required>
 			    </div>
 			  </div>
 
@@ -90,7 +90,8 @@
 			    </div>
 			  </div>
 			  
-			<form action="/newaccount" method=post oninput='up2.setCustomValidity(up2.value != up.value ? "Passwords do not match." : "")'>
+			
+			
 			  
 			  <p>
 			  <label for="password1">Password</label>
@@ -100,7 +101,7 @@
 			  <input id="password2" class="form-control" type=password name=up2>
 			  
 			  <input name="password2" type=submit value="Create account">
-			</form>
+			
 			
 		</form>
 	</div>
