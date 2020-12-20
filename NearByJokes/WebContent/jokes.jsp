@@ -66,37 +66,77 @@ background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
 	</div>
 
 	<br>
-	<div class="container">
+<%@page  import="java.io.IOException";
+     import="java.io.PrintWriter";
+    import="java.sql.Connection";
+import="java.sql.DriverManager";
+import="java.sql.ResultSet";
+import="java.sql.SQLException";
+import="java.sql.Statement";
+
+import="javax.servlet.ServletException";
+import="javax.servlet.annotation.WebServlet";
+import="javax.servlet.http.HttpServlet";
+import="javax.servlet.http.HttpServletRequest";
+import="javax.servlet.http.HttpServletResponse";
+%>
+<%
+try {
+	   Class.forName("com.mysql.cj.jdbc.Driver");
+		String url="jdbc:mysql://127.0.0.1:3306/jeeproject_db?autoReconnect=true&serverTimezone=UTC&useSSL=False&allowPublicKeyRetrieval=true";
+		String user="root";
+		String password="azerty";
+		Connection conn= DriverManager.getConnection(url, user, password);
+		Statement stm= conn.createStatement();
+		
+
+		ResultSet res=stm.executeQuery("SELECT firstname,contenu,post_title,nbr_like,nbr_dislike,nbr_share,nbr_comments,post_id FROM jeeproject_db.post , jeeproject_db.user\r\n" + 
+				"where localisation=\"Casablanca\" and auteur=email order by date;\r\n" + 
+				"");
+		while(res.next()) {String name=res.getString(1);
+		String contenu=res.getString(2);
+		String title=res.getString(3);
+		int voteUp=Integer.parseInt(res.getString(4));
+		int voteDown=Integer.parseInt(res.getString(5));
+		int nbr_share=Integer.parseInt(res.getString(6));
+		int nbr_comments=Integer.parseInt(res.getString(7));
+		int post_id=Integer.parseInt(res.getString(8));
+		request.setAttribute( "post_id", post_id );
+		request.setAttribute( "name", name );
+		request.setAttribute( "contenu", contenu );
+		request.setAttribute( "title", title );
+		request.setAttribute( "voteUp", voteUp );
+		request.setAttribute( "voteDown", voteDown );
+		request.setAttribute( "nbr_share", nbr_share );
+		request.setAttribute( "nbr_comments", nbr_comments );
+		%>
+		<form [B]action="GetComments.jsp"[/B] >
+		<div class="container">
 		<div class="jumbotron" >
 			<div>
-				<i class="fas fa-user fa-7x"></i><p>name</p>
+				<i class="fas fa-user fa-7x"></i><p><%= name%></p>
 			</div>
 			
 			<div style="background:#e5989b !important" class="jumbotron">
 				<div class="row">
-					<h1>post title</h1>
+					<h1><%= title%></h1>
 				</div>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				<p><%= contenu%>
 				</p>
 
 				<div>
 				  	<div class="row">
 				    	<button type="button" class="btn btn-secondary mr-1">
-				    		vote <i class="fas fa-arrow-alt-circle-up"></i> 
+				    		vote <i class="fas fa-arrow-alt-circle-up"><%= voteUp%></i> 
 				    	</button>
 						<button type="button" class="btn btn-secondary mr-1">
-							vote <i class="fas fa-arrow-alt-circle-down"></i>
+							vote <i class="fas fa-arrow-alt-circle-down"><%= voteDown%></i>
 						</button>
 						<button type="button" class="btn btn-secondary mr-1">
-							share <i class="fas fa-share-alt"></i>
+							share <i class="fas fa-share-alt"><%= nbr_share%></i>
 						</button>
-						<button type="button" class="btn btn-secondary">
-							comments <i class="fas fa-comments"></i>
+						<button type="submit" class="btn btn-secondary">
+							comments <i class="fas fa-comments"><%= nbr_comments%></i>
 						</button>
 				  	</div>
 				</div>
@@ -104,45 +144,19 @@ background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
 			
 		</div>
 	</div>
-	<div class="container">
-		<div class="jumbotron" >
-			<div>
-				<i class="fas fa-user fa-7x"></i><p>name</p>
-			</div>
-			
-			<div style="background:#e5989b !important" class="jumbotron">
-				<div class="row">
-					<h1>post title</h1>
-				</div>
-				
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
-				<div>
-				  	<div class="row">
-						<button type="button" class="btn btn-secondary mr-1">
-				    		vote <i class="fas fa-arrow-alt-circle-up"></i> 
-				    	</button>
-						<button type="button" class="btn btn-secondary mr-1">
-							vote <i class="fas fa-arrow-alt-circle-down"></i>
-						</button>
-						<button type="button" class="btn btn-secondary mr-1">
-							share <i class="fas fa-share-alt"></i>
-						</button>
-						<button type="button" class="btn btn-secondary">
-							comments <i class="fas fa-comments"></i>
-						</button>
-				  	</div>
-				</div>
-			</div>
-			
-		</div>
-	</div>
-	
+	</form>
+<%		}
+
+
+		
+  }catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+%>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
