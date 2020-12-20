@@ -91,7 +91,7 @@ try {
 		
 
 		ResultSet res=stm.executeQuery("SELECT firstname,contenu,post_title,nbr_like,nbr_dislike,nbr_share,nbr_comments,post_id FROM jeeproject_db.post , jeeproject_db.user\r\n" + 
-				"where localisation=\"Casablanca\" and auteur=email order by date;\r\n" + 
+				"where localisation=\"Casablaca\" and auteur=email order by date;\r\n" + 
 				"");
 		while(res.next()) {String name=res.getString(1);
 		String contenu=res.getString(2);
