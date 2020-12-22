@@ -11,8 +11,8 @@
 <body style="background-image:url(pinkback.jpg);background-size: cover;">
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-white">
-		<a class="navbar-brand" href="#">
-	    	<img src="logo.jpeg" width="50" height="70" class="d-inline-block align-top" alt="" loading="lazy">
+		<a class="navbar-brand" href="http://localhost:8080/NBJokes/signup.jsp">
+	    	<img src="logo.jpeg" width="50" height="70" class="d-inline-block align-top" alt="logo" loading="lazy">
 	  	</a>
 	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    	<span class="navbar-toggler-icon"></span>
@@ -21,13 +21,15 @@
 	  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    	<ul class="navbar-nav mr-auto">
 	      		<li class="nav-item active" >
-	        	<a class="nav-link" href="#" style="font-family: Montserrat, sans-serif; font-size: 1.5em;margin-top: -0.3em;font-weight: 800;color: rgba(0, 0, 0, 1);text-transform: none;font-style: normal;text-decoration: none;line-height: 1.4em;letter-spacing: 0px;text-shadow: 0px 0px 0px rgba(0, 0, 0, 1);}">NBJokes<span class="sr-only">(current)</span>
+	        	<a class="nav-link" href="http://localhost:8080/NBJokes/signup.jsp" 
+	        	style="font-family: Montserrat, sans-serif; font-size: 1.5em;margin-top: -0.3em;font-weight: 800;
+	        	color: rgba(0, 0, 0, 1);text-transform: none;font-style: normal;text-decoration: none;line-height: 1.4em;
+	        	letter-spacing: 0px;text-shadow: 0px 0px 0px rgba(0, 0, 0, 1);}">
+	        		NBJokes
+	        		<span class="sr-only">(current)</span>
 				</a>
 	      		</li>
-	    	</ul>
-	    	<form class="form-inline my-2 my-lg-0">
-	      		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign up</button>
-	    	</form>  
+	    	</ul> 
 	  	</div>
 	</nav>
 

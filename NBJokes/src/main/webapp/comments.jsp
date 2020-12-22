@@ -9,13 +9,18 @@
 </head>
 <body style="background-color: pink ; background-position: cover ">
 	<nav class="navbar navbar-expand-lg navbar-light bg-white">
-	    <a class="navbar-brand" href="#">
+	    <a class="navbar-brand" href="http://localhost:8080/NBJokes/jokes.jsp">
 	    	<img src="logo.jpeg" width="50" height="70" class="d-inline-block align-top" alt="" loading="lazy">
 	    </a>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    	<div class="navbar-nav">
 				<div class="nav-item active" >
-		        	<a class="nav-link" href="#" style="font-family: Montserrat, sans-serif; font-size: 1.5em;margin-top: -0.3em;font-weight: 800;color: rgba(0, 0, 0, 1);text-transform: none;font-style: normal;text-decoration: none;line-height: 1.4em;letter-spacing: 0px;text-shadow: 0px 0px 0px rgba(0, 0, 0, 1);}">NBJokes<span class="sr-only">(current)</span>
+		        	<a class="nav-link" href="http://localhost:8080/NBJokes/jokes.jsp" 
+		        	style="font-family: Montserrat, sans-serif; font-size: 1.5em;margin-top: -0.3em;font-weight: 800;
+		        	color: rgba(0, 0, 0, 1);text-transform: none;font-style: normal;text-decoration: none;
+		        	line-height: 1.4em;letter-spacing: 0px;text-shadow: 0px 0px 0px rgba(0, 0, 0, 1);}">
+		        		NBJokes
+		        		<span class="sr-only">(current)</span>
 					</a>
 	      		</div>
 	      		<div>

@@ -14,13 +14,18 @@ background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
 ">
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-white">
-	    <a class="navbar-brand" href="#">
+	    <a class="navbar-brand" href="http://localhost:8080/NBJokes/jokes.jsp">
 	    	<img src="logo.jpeg" width="50" height="70" class="d-inline-block align-top" alt="" loading="lazy">
 	    </a>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    	<div class="navbar-nav">
 				<div class="nav-item active" >
-		        	<a class="nav-link" href="#" style="font-family: Montserrat, sans-serif; font-size: 1.5em;margin-top: -0.3em;font-weight: 800;color: rgba(0, 0, 0, 1);text-transform: none;font-style: normal;text-decoration: none;line-height: 1.4em;letter-spacing: 0px;text-shadow: 0px 0px 0px rgba(0, 0, 0, 1);}">NBJokes<span class="sr-only">(current)</span>
+		        	<a class="nav-link" href="http://localhost:8080/NBJokes/jokes.jsp" 
+		        	style="font-family: Montserrat, sans-serif; font-size: 1.5em;margin-top: -0.3em;
+		        	font-weight: 800;color: rgba(0, 0, 0, 1);text-transform: none;font-style: normal;
+		        	text-decoration: none;line-height: 1.4em;letter-spacing: 0px;text-shadow: 0px 0px 0px rgba(0, 0, 0, 1);}">
+		        		NBJokes
+		        		<span class="sr-only">(current)</span>
 					</a>
 	      		</div>
 	      		<div>
@@ -38,11 +43,11 @@ background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
     					<i class="fas fa-user"></i>
   					</button>
 	  				<ul class="dropdown-menu dropdown-menu-right">
-		  				<a class="dropdown-item" href="#">Profile</a>
+		  				<a class="dropdown-item" href="http://localhost:8080/NBJokes/profile.jsp">Profile</a>
 		    			<a class="dropdown-item" href="#">Settings</a>
 		    			<a class="dropdown-item" href="#">About us</a>
 		    			<a class="dropdown-item" href="#">Help</a>
-		    			<a class="dropdown-item" href="#">Log out</a>
+		    			<a class="dropdown-item" href="http://localhost:8080/NBJokes/login.jsp">Log out</a>
 	  				</ul>
 				</div>
 			</div>
@@ -123,9 +128,12 @@ try {
 						<button type="button" class="btn btn-secondary mr-1">
 							share <i class="fas fa-share-alt"></i>
 						</button>
-						<a><button type="submit" class="btn btn-secondary" href="http://localhost:8080/NBJokes/GetComments.jsp">
-							comments <i class="fas fa-comments" ></i>
-						</button></a>
+						<a style="color: #FFFFFF;" href="http://localhost:8080/NBJokes/comments.jsp">
+							<button type="button" class="btn btn-secondary">
+							 comments 
+							<i class="fas fa-comments"> 2 </i>
+							</button>
+						</a> 
 				  	</div>
 				</div>
 			</div>
