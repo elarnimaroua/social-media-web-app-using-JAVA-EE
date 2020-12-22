@@ -6,41 +6,75 @@
 	<title>Profile</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
-<body style="background-image:url(pinkback.jpg);
-			 background-size: cover;">
+<body style="background-color: pink ; background-position: cover ">
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-white">
-	  <a class="navbar-brand" href="#">
-	    <img src="logo.jpeg" width="50" height="70" class="d-inline-block align-top" alt="" loading="lazy">
-	  </a>
+	  	<a class="navbar-brand" href="#">
+	    	<img src="logo.jpeg" width="50" height="70" class="d-inline-block align-top" alt="" loading="lazy">
+	  	</a>
+	  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    	<div class="navbar-nav">
+		      	<div class="nav-item active" >
+			        <a class="nav-link" href="#" style="font-family: Montserrat, sans-serif; font-size: 1.5em;margin-top: -0.3em;font-weight: 800;color: rgba(0, 0, 0, 1);text-transform: none;font-style: normal;text-decoration: none;line-height: 1.4em;letter-spacing: 0px;text-shadow: 0px 0px 0px rgba(0, 0, 0, 1);}">NBJokes<span class="sr-only">(current)</span>
+					</a>
+		      	</div>
+	  		</div>
+		    <div class="navbar-nav ml-auto">
+		     	<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    			Profile
+		  			</button>
+		  			<ul class="dropdown-menu dropdown-menu-right">
+		    			<a class="dropdown-item" href="#">Settings</a>
+		    			<a class="dropdown-item" href="#">About us</a>
+		    			<a class="dropdown-item" href="#">Help</a>
+		    			<a class="dropdown-item" href="#">Log out</a>
+		  			</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="jumbotron" >
+			<div>
+				<i class="fas fa-user fa-7x"></i><p>name</p>
+				<!-- <small class="text-muted">10 min ago</small> -->
 
-	  
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <div class="navbar-nav">
-	    
-	    	
-	      <div class="nav-item active" >
-	        <a class="nav-link" href="#" style="font-family: Montserrat, sans-serif; font-size: 1.5em;margin-top: -0.3em;font-weight: 800;color: rgba(0, 0, 0, 1);text-transform: none;font-style: normal;
-											    text-decoration: none;line-height: 1.4em;letter-spacing: 0px;text-shadow: 0px 0px 0px rgba(0, 0, 0, 1);}">NBJokes<span class="sr-only">(current)</span>
-			</a>
-	      </div>
-	  </div>
-	      <div class="navbar-nav ml-auto">
-	     <div class="dropdown">
-			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    			Profile
-  			</button>
-  			<ul class="dropdown-menu dropdown-menu-right">
-    			<a class="dropdown-item" href="#">Settings</a>
-    			<a class="dropdown-item" href="#">About us</a>
-    			<a class="dropdown-item" href="#">Help</a>
-    			<a class="dropdown-item" href="#">Log out</a>
-  			</ul>
+			</div>
+			
+			<div style="background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 100%);" class="jumbotron">
+				<div class="row">
+					<h1>post title</h1>
+				</div>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<div>
+				  	<div class="row">
+						<button type="button" class="btn btn-secondary mr-1">
+				    		vote <i class="fas fa-arrow-alt-circle-up"> 0 </i> 
+				    	</button>
+						<button type="button" class="btn btn-secondary mr-1">
+							vote <i class="fas fa-arrow-alt-circle-down"> 0 </i>
+						</button>
+						<button type="button" class="btn btn-secondary mr-1">
+							share <i class="fas fa-share-alt"> 0 </i>
+						</button>
+						<button type="button" class="btn btn-secondary">
+							comments <i class="fas fa-comments"> 0 </i>
+						</button>
+				  	</div>
+				</div>
+			</div>
+			
 		</div>
 	</div>
-	    
-	  </div>
-	</nav>
+	
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
