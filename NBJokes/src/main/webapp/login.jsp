@@ -42,14 +42,14 @@
 			  <br>
 			  <br>
 			  <div class="container-sm">
-			  <form>
+			  <form method="Post" action="Login">
 				  <div class="form-group">
 				    <label for="exampleInputEmail1" >Pseudo</label>
-				    <input type="email" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp">
+				    <input type="email" class="form-control"  aria-describedby="emailHelp" name="email">
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Password</label>
-				    <input type="password" class="form-control" id="exampleInputPassword1">
+				    <input type="password" class="form-control" name="password">
 				    
 				  </div>
 				  <button type="submit" class="btn btn-success">Login</button>

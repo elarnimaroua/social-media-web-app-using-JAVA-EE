@@ -37,7 +37,7 @@
 		<div class="jumbotron" style=" margin-top: 7em" >
 			<h1>Sign Up</h1><br>
 			<h6>Please fill in this form to create an account !</h6><br><hr>
-			<form  method="post"  >
+			<form  method="post" action="SignUp" >
 			  	<div class="form-row">
 			    	<div class="col-md-6 mb-3">
 			      		<label for="validationDefault01">First name</label>
