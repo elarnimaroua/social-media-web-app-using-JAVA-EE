@@ -76,15 +76,19 @@ java.sql.SQLException,java.sql.Statement,javax.servlet.ServletException,javax.se
 javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"
 %>
 <%
+
 try {
 	   Class.forName("com.mysql.cj.jdbc.Driver");
 		String url="jdbc:mysql://127.0.0.1:3306/jeeproject_db?autoReconnect=true&serverTimezone=UTC&useSSL=False&allowPublicKeyRetrieval=true";
 		String user="root";
-		String password="Najatelfrougui789";
+		String password="root";
 		Connection conn= DriverManager.getConnection(url, user, password);
 		Statement stm= conn.createStatement();
 		
+ 		session.getAttribute("email");
 
+
+		
 		ResultSet res=stm.executeQuery("SELECT firstname,contenu,nbr_like,nbr_dislike,post_id FROM jeeproject_db.post , jeeproject_db.user\r\n" + 
 				"where localisation=\"Casablanca\" and auteur=email order by date desc;\r\n" + 
 				"");

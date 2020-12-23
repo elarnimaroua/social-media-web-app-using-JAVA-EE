@@ -7,11 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 
@@ -36,8 +38,8 @@ public class Login extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest Req, HttpServletResponse Res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		 String email = Req.getParameter("Email");
-		 String entered_password = Req.getParameter("Password");
+		 String email = Req.getParameter("email");
+		 String entered_password = Req.getParameter("password");
 	     
 
 	     try {
@@ -48,13 +50,22 @@ public class Login extends HttpServlet {
 				Connection conn= DriverManager.getConnection(url, user, db_password);
 				Statement stm= conn.createStatement();
 				ResultSet res=stm.executeQuery("SELECT * FROM jeeproject_db.user WHERE `email` = "+email+" LIMIT 1;");
-				while (res.next()) {
+				if (res.next()) {
 			        String password = res.getString("password");
 			        /*puisque l'email est unique, il suffit de vérifier que le mot de pass est corect*/
 			        if (password.equals(entered_password)){
-						
 			        	/*what happens in the login infos are correct*/
-					}
+			        	
+			        	/*send to main page to see nearbyjokes depending on where the user is*/
+			        	
+					}else {
+						/* what happens if the login infos are wrong:*/
+						
+						/*send to login page */
+						
+					
+				}
+			     
 			      }
 				
 	     }catch (ClassNotFoundException e) {
