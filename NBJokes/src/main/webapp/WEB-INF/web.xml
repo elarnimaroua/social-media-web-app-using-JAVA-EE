@@ -10,8 +10,18 @@
   	<description></description>
   	<servlet-class>com.maroua.NBJokes.TestServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>RecordPost</servlet-name>
+  	<display-name>RecordPost</display-name>
+  	<description></description>
+  	<servlet-class>com.maroua.NBJokes.RecordPost</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>TestServlet</servlet-name>
   	<url-pattern>/TestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RecordPost</servlet-name>
+  	<url-pattern>/RecordPost</url-pattern>
   </servlet-mapping>
 </web-app>
