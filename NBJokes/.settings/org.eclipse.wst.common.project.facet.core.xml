@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faceted-project>
+<<<<<<< HEAD:NearByJokes/.settings/org.eclipse.wst.common.project.facet.core.xml
+  <runtime name="Apache Tomcat v9.0 (2)"/>
+  <fixed facet="java"/>
+  <fixed facet="jst.web"/>
+=======
+  <runtime name="Apache Tomcat v9.0"/>
+>>>>>>> 70bb77e07efb82d5e23ce75f3f29b39e9d3e11d5:NBJokes/.settings/org.eclipse.wst.common.project.facet.core.xml
+  <fixed facet="wst.jsdt.web"/>
+  <installed facet="java" version="1.5"/>
+  <installed facet="jst.web" version="2.3"/>
+  <installed facet="wst.jsdt.web" version="1.0"/>
+</faceted-project>

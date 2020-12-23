@@ -1,4 +1,4 @@
-package com.project;
+package com.maroua.NBJokes;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -46,12 +46,12 @@ public class SignUp extends HttpServlet {
 		 String zip = Req.getParameter("zip");
 		 String pass2 = Req.getParameter("password2");
 	     
-<<<<<<< HEAD
+
 	     try {
 	    	   Class.forName("com.mysql.cj.jdbc.Driver");
 				String url="jdbc:mysql://127.0.0.1:3306/jeeproject_db?autoReconnect=true&serverTimezone=UTC&useSSL=False&allowPublicKeyRetrieval=true";
 				String user="root";
-				String password="";
+				String password="Najatelfrougui789";
 				Connection conn= DriverManager.getConnection(url, user, password);
 				Statement stm= conn.createStatement();
 
@@ -72,9 +72,7 @@ public class SignUp extends HttpServlet {
 	  
 
 		 
-=======
-	     /* TEST TEST*/
->>>>>>> 819bc76d0bbaff04508c8b0f96451d78a034444d
+
 		
 	}
 
