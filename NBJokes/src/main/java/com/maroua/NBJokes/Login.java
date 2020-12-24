@@ -7,21 +7,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 
 
-@WebServlet("/SignUp")
-public class SignUp extends HttpServlet {
+@WebServlet("/Login")
+public class Login extends HttpServlet {
 	
       
     
-    public SignUp( ) {
+    public Login( ) {
         super();
      
     }
@@ -36,15 +38,8 @@ public class SignUp extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest Req, HttpServletResponse Res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		 String name = Req.getParameter("First name");
-		 String lastname = Req.getParameter("Last name");
-		 String birthday = Req.getParameter("birthday");
-		 String address = Req.getParameter("adress");
-		 String city = Req.getParameter("city");
 		 String email = Req.getParameter("email");
-		 String pass1 = Req.getParameter("password1");
-		 String zip = Req.getParameter("zip");
-		 String pass2 = Req.getParameter("password2");
+		 String entered_password = Req.getParameter("password");
 	     
 
 	     try {
@@ -54,12 +49,24 @@ public class SignUp extends HttpServlet {
 				String db_password="root";
 				Connection conn= DriverManager.getConnection(url, user, db_password);
 				Statement stm= conn.createStatement();
-
-				int i=stm.executeUpdate("INSERT INTO jeeproject_db.user ()  VALUES ('"+email+"','"+name+"','"+lastname+"','"+birthday+"','"+address+"','"+city+"','"+zip+"','"+pass1+"')");
-			    System.out.println(i);
-				ResultSet res=stm.executeQuery("SELECT * FROM jeeproject_db.user");
-				while(res.next()) {System.out.println(res.getString(1));}
-
+				ResultSet res=stm.executeQuery("SELECT * FROM jeeproject_db.user WHERE `email` = "+email+" LIMIT 1;");
+				if (res.next()) {
+			        String password = res.getString("password");
+			        /*puisque l'email est unique, il suffit de vérifier que le mot de pass est corect*/
+			        if (password.equals(entered_password)){
+			        	/*what happens in the login infos are correct*/
+			        	
+			        	/*send to main page to see nearbyjokes depending on where the user is*/
+			        	
+					}else {
+						/* what happens if the login infos are wrong:*/
+						
+						/*send to login page */
+						
+					
+				}
+			     
+			      }
 				
 	     }catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
