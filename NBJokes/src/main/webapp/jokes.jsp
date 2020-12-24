@@ -79,19 +79,22 @@ javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"
 
 try {
 	   Class.forName("com.mysql.cj.jdbc.Driver");
-		String url="jdbc:mysql://127.0.0.1:3306/jeeproject_db?autoReconnect=true&serverTimezone=UTC&useSSL=False&allowPublicKeyRetrieval=true";
-		String user="root";
-		String password="root";
-		Connection conn= DriverManager.getConnection(url, user, password);
+		String db_url="jdbc:mysql://127.0.0.1:3306/jeeproject_db?autoReconnect=true&serverTimezone=UTC&useSSL=False&allowPublicKeyRetrieval=true";
+		String db_user="root";
+		String db_password="root";
+		Connection conn= DriverManager.getConnection(db_url, db_user, db_password);
 		Statement stm= conn.createStatement();
 		
- 		session.getAttribute("email");
+		
+ 		String email = session.getAttribute("email").toString();
+		ResultSet user_info =stm.executeQuery("SELECT * FROM jeeproject_db.user WHERE `email` = "+email.toLowerCase()+" LIMIT 1;");
+		String userLocation = user_info.getString("localisation");
+		
 
 
 		
 		ResultSet res=stm.executeQuery("SELECT firstname,contenu,nbr_like,nbr_dislike,post_id FROM jeeproject_db.post , jeeproject_db.user\r\n" + 
-				"where localisation=\"Casablanca\" and auteur=email order by date desc;\r\n" + 
-				"");
+				"where localisation="+userLocation+" order by date desc;");
 		while(res.next()) {String name=res.getString(1);
 		String contenu=res.getString(2);
 		

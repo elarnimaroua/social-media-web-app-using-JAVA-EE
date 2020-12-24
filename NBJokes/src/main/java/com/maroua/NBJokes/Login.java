@@ -49,7 +49,7 @@ public class Login extends HttpServlet {
 				String db_password="root";
 				Connection conn= DriverManager.getConnection(url, user, db_password);
 				Statement stm= conn.createStatement();
-				ResultSet res=stm.executeQuery("SELECT * FROM jeeproject_db.user WHERE `email` = "+email+" LIMIT 1;");
+				ResultSet res=stm.executeQuery("SELECT * FROM jeeproject_db.user WHERE `email` = "+email.toLowerCase()+" LIMIT 1;");
 				if (res.next()) {
 			        String password = res.getString("password");
 			        /*puisque l'email est unique, il suffit de vérifier que le mot de pass est corect*/
@@ -57,10 +57,16 @@ public class Login extends HttpServlet {
 			        	/*what happens in the login infos are correct*/
 			        	
 			        	/*send to main page to see nearbyjokes depending on where the user is*/
+			        	HttpSession session = Req.getSession();
+			        	session.setAttribute("email", email);
+						Req.getRequestDispatcher("/jokes.jsp").forward(Req,Res);
+
 			        	
 					}else {
 						/* what happens if the login infos are wrong:*/
 						
+						Req.getRequestDispatcher("/login.jsp").forward(Req,Res);
+
 						/*send to login page */
 						
 					

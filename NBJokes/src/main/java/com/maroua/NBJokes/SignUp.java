@@ -55,7 +55,7 @@ public class SignUp extends HttpServlet {
 				Connection conn= DriverManager.getConnection(url, user, db_password);
 				Statement stm= conn.createStatement();
 
-				int i=stm.executeUpdate("INSERT INTO jeeproject_db.user ()  VALUES ('"+email+"','"+name+"','"+lastname+"','"+birthday+"','"+address+"','"+city+"','"+zip+"','"+pass1+"')");
+				int i=stm.executeUpdate("INSERT INTO jeeproject_db.user ()  VALUES ('"+email.toLowerCase()+"','"+name+"','"+lastname+"','"+birthday+"','"+address+"','"+city+"','"+zip+"','"+pass1+"')");
 			    System.out.println(i);
 				ResultSet res=stm.executeQuery("SELECT * FROM jeeproject_db.user");
 				while(res.next()) {System.out.println(res.getString(1));}
