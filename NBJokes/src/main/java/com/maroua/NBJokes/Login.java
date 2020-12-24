@@ -59,12 +59,15 @@ public class Login extends HttpServlet {
 			        	/*send to main page to see nearbyjokes depending on where the user is*/
 			        	HttpSession session = Req.getSession();
 			        	session.setAttribute("email", email);
+			        	session.setAttribute("message", "Welcome, you are connected using ur email :"+email);
+
 						Req.getRequestDispatcher("/jokes.jsp").forward(Req,Res);
 
 			        	
 					}else {
 						/* what happens if the login infos are wrong:*/
-						
+						HttpSession session = Req.getSession();
+			        	session.setAttribute("message", "the login informations are not correct");
 						Req.getRequestDispatcher("/login.jsp").forward(Req,Res);
 
 						/*send to login page */
