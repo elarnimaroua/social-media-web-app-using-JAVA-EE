@@ -44,35 +44,42 @@
 	  	</div>
 	</nav>
 	<br>
-	<div class="container">
-		<div class="jumbotron" >
-			<div>
-			<%@page  import="java.io.IOException";
-     import="java.io.PrintWriter";
-    import="java.sql.Connection";
-import="java.sql.DriverManager";
-import="java.sql.ResultSet";
-import="java.sql.SQLException";
-import="java.sql.Statement";
-
-import="javax.servlet.ServletException";
-import="javax.servlet.annotation.WebServlet";
-import="javax.servlet.http.HttpServlet";
-import="javax.servlet.http.HttpServletRequest";
-import="javax.servlet.http.HttpServletResponse";
+	
+			<%@page  import="java.io.IOException,java.io.PrintWriter,java.sql.Connection,java.sql.DriverManager,java.sql.ResultSet,java.sql.SQLException,java.sql.Statement,javax.servlet.ServletException,javax.servlet.annotation.WebServlet,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"
 %>
 <%
-String  post_id= request.getParameter("post_id");
-String  name= request.getParameter("name");
-String contenu= request.getParameter("contenu");
-String  title= request.getParameter("title");
-String  voteUp= request.getParameter("voteUp");
-String  voteDown= request.getParameter("voteDown");
-String nbr_share=request.getParameter("nbr_share");
 
-String nbr_comments=request.getParameter("nbr_comments");
+int post_id=Integer.parseInt(request.getParameter("id"));
+System.out.println(post_id);
+
+
+
+;
 %>
+<%
+try {
+	   Class.forName("com.mysql.cj.jdbc.Driver");
+		String url="jdbc:mysql://127.0.0.1:3306/jeeproject_db?autoReconnect=true&serverTimezone=UTC&useSSL=False&allowPublicKeyRetrieval=true";
+		String user="root";
+		String password="azerty";
+		Connection conn= DriverManager.getConnection(url, user, password);
+		Statement stm= conn.createStatement();
+		
+		
 
+		ResultSet res1=stm.executeQuery("SELECT firstname,contenu,post_title,nbr_like,nbr_dislike,nbr_share,nbr_comments FROM jeeproject_db.post , jeeproject_db.user\r\n" + 
+				"where post_id='"+post_id+"' and auteur=email order by date;\r\n");
+		while(res1.next()) {String name=res1.getString(1);
+		String contenu=res1.getString(2);
+		String title=res1.getString(3);
+		int voteUp=Integer.parseInt(res1.getString(4));
+		int voteDown=Integer.parseInt(res1.getString(5));
+		int nbr_share=Integer.parseInt(res1.getString(6));
+		int nbr_comments=Integer.parseInt(res1.getString(7));
+		%>
+		<div class="container">
+		<div class="jumbotron" >
+			<div>
 				<i class="fas fa-user fa-7x"></i><p><%= name%></p>
 			</div>
 			
@@ -109,20 +116,19 @@ String nbr_comments=request.getParameter("nbr_comments");
 				<button type="submit" class="btn btn-outline-success">Comment</button>
 			</div>
 			<br>
-			<%@page  import="java.io.IOException";
-     import="java.io.PrintWriter";
-    import="java.sql.Connection";
-import="java.sql.DriverManager";
-import="java.sql.ResultSet";
-import="java.sql.SQLException";
-import="java.sql.Statement";
+			<%		}
 
-import="javax.servlet.ServletException";
-import="javax.servlet.annotation.WebServlet";
-import="javax.servlet.http.HttpServlet";
-import="javax.servlet.http.HttpServletRequest";
-import="javax.servlet.http.HttpServletResponse";
+
+		
+  }catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
 %>
+			
 <%
 try {
 	   Class.forName("com.mysql.cj.jdbc.Driver");
@@ -132,10 +138,12 @@ try {
 		Connection conn= DriverManager.getConnection(url, user, password);
 		Statement stm= conn.createStatement();
 		
+		
 
 		ResultSet res=stm.executeQuery("SELECT  C.contenu,nbr_love FROM jeeproject_db.commentaire C,jeeproject_db.post P where C.post_id=P.post_id='"+post_id+"'" + 
 				"");
 		while(res.next()) {String contenu_comment=res.getString(1);
+		System.out.println(contenu_comment);
 		String nbr_love=res.getString(2);
 		
 		%>
