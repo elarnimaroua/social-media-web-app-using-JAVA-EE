@@ -14,18 +14,13 @@ background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
 ">
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-white">
-	    <a class="navbar-brand" href="http://localhost:8080/NBJokes/jokes.jsp">
+	    <a class="navbar-brand" href="#">
 	    	<img src="logo.jpeg" width="50" height="70" class="d-inline-block align-top" alt="" loading="lazy">
 	    </a>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    	<div class="navbar-nav">
 				<div class="nav-item active" >
-		        	<a class="nav-link" href="http://localhost:8080/NBJokes/jokes.jsp" 
-		        	style="font-family: Montserrat, sans-serif; font-size: 1.5em;margin-top: -0.3em;
-		        	font-weight: 800;color: rgba(0, 0, 0, 1);text-transform: none;font-style: normal;
-		        	text-decoration: none;line-height: 1.4em;letter-spacing: 0px;text-shadow: 0px 0px 0px rgba(0, 0, 0, 1);}">
-		        		NBJokes
-		        		<span class="sr-only">(current)</span>
+		        	<a class="nav-link" href="#" style="font-family: Montserrat, sans-serif; font-size: 1.5em;margin-top: -0.3em;font-weight: 800;color: rgba(0, 0, 0, 1);text-transform: none;font-style: normal;text-decoration: none;line-height: 1.4em;letter-spacing: 0px;text-shadow: 0px 0px 0px rgba(0, 0, 0, 1);}">NBJokes<span class="sr-only">(current)</span>
 					</a>
 	      		</div>
 	      		<div>
@@ -43,11 +38,11 @@ background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
     					<i class="fas fa-user"></i>
   					</button>
 	  				<ul class="dropdown-menu dropdown-menu-right">
-		  				<a class="dropdown-item" href="http://localhost:8080/NBJokes/profile.jsp">Profile</a>
+		  				<a class="dropdown-item" href="#">Profile</a>
 		    			<a class="dropdown-item" href="#">Settings</a>
 		    			<a class="dropdown-item" href="#">About us</a>
 		    			<a class="dropdown-item" href="#">Help</a>
-		    			<a class="dropdown-item" href="http://localhost:8080/NBJokes/login.jsp">Log out</a>
+		    			<a class="dropdown-item" href="#">Log out</a>
 	  				</ul>
 				</div>
 			</div>
@@ -71,46 +66,41 @@ background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
 	</div>
 
 	<br>
-<%@page  import="java.io.IOException,java.io.PrintWriter,java.sql.Connection,java.sql.DriverManager,java.sql.ResultSet,
-java.sql.SQLException,java.sql.Statement,javax.servlet.ServletException,javax.servlet.annotation.WebServlet,javax.servlet.http.HttpServlet,
-javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"
+<%@page  import="java.io.IOException,java.io.PrintWriter,java.sql.Connection,java.sql.DriverManager,java.sql.ResultSet,java.sql.SQLException,java.sql.Statement,javax.servlet.ServletException,javax.servlet.annotation.WebServlet,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,java.util.*,java.util.function.Supplier" 
 %>
 <%
-
 try {
 	   Class.forName("com.mysql.cj.jdbc.Driver");
-		String db_url="jdbc:mysql://127.0.0.1:3306/jeeproject_db?autoReconnect=true&serverTimezone=UTC&useSSL=False&allowPublicKeyRetrieval=true";
-		String db_user="root";
-		String db_password="root";
-		Connection conn= DriverManager.getConnection(db_url, db_user, db_password);
+		String url="jdbc:mysql://127.0.0.1:3306/jeeproject_db?autoReconnect=true&serverTimezone=UTC&useSSL=False&allowPublicKeyRetrieval=true";
+		String user="root";
+		String password="azerty";
+		Connection conn= DriverManager.getConnection(url, user, password);
 		Statement stm= conn.createStatement();
-		
-		
- 		String email = session.getAttribute("email").toString();
-		ResultSet user_info =stm.executeQuery("SELECT * FROM jeeproject_db.user WHERE `email` = "+email.toLowerCase()+" LIMIT 1;");
-		String userLocation = user_info.getString("localisation");
+		int i=0;
+		List<Integer> listIds = new ArrayList<Integer>();
 		
 
-
-		
-		ResultSet res=stm.executeQuery("SELECT firstname,contenu,nbr_like,nbr_dislike,post_id FROM jeeproject_db.post , jeeproject_db.user\r\n" + 
-				"where localisation="+userLocation+" order by date desc;");
+		ResultSet res=stm.executeQuery("SELECT firstname,contenu,post_title,nbr_like,nbr_dislike,nbr_share,nbr_comments,post_id FROM jeeproject_db.post , jeeproject_db.user\r\n" + 
+				"where localisation=\"Casablanca\" and auteur=email order by date;\r\n" + 
+				"");
 		while(res.next()) {String name=res.getString(1);
 		String contenu=res.getString(2);
-		
-		int voteUp=Integer.parseInt(res.getString(3));
-		int voteDown=Integer.parseInt(res.getString(4));
-		
-		int post_id=Integer.parseInt(res.getString(5));
-		request.setAttribute( "post_id", post_id );
-		request.setAttribute( "name", name );
-		request.setAttribute( "contenu", contenu );
-		request.setAttribute( "voteUp", voteUp );
-		request.setAttribute( "voteDown", voteDown );
+		String title=res.getString(3);
+		int voteUp=Integer.parseInt(res.getString(4));
+		int voteDown=Integer.parseInt(res.getString(5));
+		int nbr_share=Integer.parseInt(res.getString(6));
+		int nbr_comments=Integer.parseInt(res.getString(7));
+		int post_id=Integer.parseInt(res.getString(8));
+		listIds.add(post_id);
+		int id=listIds.get(i);
+		i++;
 		
 		
 		%>
-		<form [B]action="GetComments.jsp"[/B] >
+		
+		<form >
+		  
+		 
 		<div class="container">
 		<div class="jumbotron" >
 			<div>
@@ -119,7 +109,7 @@ try {
 			
 			<div style="background:#e5989b !important" class="jumbotron">
 				<div class="row">
-					<h1></h1>
+					<h1><%= title%></h1>
 				</div>
 				<p><%= contenu%>
 				</p>
@@ -133,9 +123,9 @@ try {
 							vote <i class="fas fa-arrow-alt-circle-down"><%= voteDown%></i>
 						</button>
 						<button type="button" class="btn btn-secondary mr-1">
-							share <i class="fas fa-share-alt"></i>
+							share <i class="fas fa-share-alt"><%= nbr_share%></i>
 						</button>
-						<a style="color: #FFFFFF;" href="http://localhost:8080/NBJokes/comments.jsp">
+						<a style="color: #FFFFFF;" href="http://localhost:8080/NearByJokes/GetComments.jsp?id=<%= id%>">
 							<button type="button" class="btn btn-secondary">
 							 comments 
 							<i class="fas fa-comments"> 2 </i>
