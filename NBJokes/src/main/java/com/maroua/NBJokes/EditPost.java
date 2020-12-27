@@ -38,7 +38,7 @@ public class EditPost extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest Req, HttpServletResponse Res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String post_id = Req.getParameter("post_id");
+		int post_id = Integer.parseInt(Req.getParameter("post_id"));
 		String contenu = Req.getParameter("contenu");
 		HttpSession session = Req.getSession();
      	String old_email =  session.getAttribute("email").toString();
@@ -64,7 +64,7 @@ public class EditPost extends HttpServlet {
 				
 					PreparedStatement stmt=conn.prepareStatement("UPDATE jeeproject_db.post SET contenu ='?' WHERE post_id='?' ");
 					stmt.setString(1,contenu);
-					stmt.setString(2,post_id); 
+					stmt.setInt(2,post_id); 
 					
 					int i=stmt.executeUpdate(); 
 					
